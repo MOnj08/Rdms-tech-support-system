@@ -56,29 +56,78 @@ function renderShell() {
       </nav>
     </div>
     <div class="live-ticker">
-      <div class="ticker-row">
+      <!-- Fixed left: LIVE badge -->
+      <div class="ticker-left">
         <span class="live-badge">● LIVE</span>
-        <span class="ticker-item"><span class="dot" style="background:#00e676"></span>Remote monitoring enabled: <strong id="tk-petc-active">—</strong> centers</span>
-        <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC regions covered: <strong>16 regions nationwide</strong></span>
-        <span class="ticker-item"><span class="dot" style="background:#ffc107"></span>Resolved tickets: <strong id="tk-resolved">—</strong> resolved</span>
-        <span class="ticker-item"><span class="dot" style="background:#00e676"></span>System status: <strong style="color:#00e676">All core services running</strong></span>
-        <span class="ticker-item"><span class="dot" style="background:#00bcd4"></span>RDMS Dashboard: 2026 – Live monitoring active</span>
-        <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC Clients: <strong id="tk-petc-total">—</strong> centers</span>
-        <span class="ticker-item"><span class="dot" style="background:#9c27b0"></span>PMVIC Clients: <strong id="tk-pmvic-total">—</strong> centers</span>
+      </div>
+      <!-- Scrolling track -->
+      <div class="ticker-track">
+        <div class="ticker-belt" id="ticker-belt">
+          <!-- Set A -->
+          <span class="ticker-item"><span class="dot" style="background:#00e676"></span>Remote monitoring enabled: <strong id="tk-petc-active">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC regions covered: <strong>16 regions nationwide</strong></span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#ffc107"></span>Resolved tickets: <strong id="tk-resolved">—</strong> resolved</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#00e676"></span>System status: <strong style="color:#00e676">All core services running</strong></span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#00bcd4"></span>RDMS Dashboard: 2026 – Live monitoring active</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC Clients: <strong id="tk-petc-total">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#9c27b0"></span>PMVIC Clients: <strong id="tk-pmvic-total">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+          <!-- Set B (duplicate for seamless loop) -->
+          <span class="ticker-item"><span class="dot" style="background:#00e676"></span>Remote monitoring enabled: <strong id="tk-petc-active-2">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC regions covered: <strong>16 regions nationwide</strong></span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#ffc107"></span>Resolved tickets: <strong id="tk-resolved-2">—</strong> resolved</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#00e676"></span>System status: <strong style="color:#00e676">All core services running</strong></span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#00bcd4"></span>RDMS Dashboard: 2026 – Live monitoring active</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#2196f3"></span>PETC Clients: <strong id="tk-petc-total-2">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+          <span class="ticker-item"><span class="dot" style="background:#9c27b0"></span>PMVIC Clients: <strong id="tk-pmvic-total-2">—</strong> centers</span>
+          <span class="ticker-sep">◆</span>
+        </div>
+      </div>
+      <!-- Fixed right: clock -->
+      <div class="ticker-right">
         <span class="ticker-time" id="live-clock"></span>
       </div>
     </div>
     <div class="secondary-ticker">
-      <div class="secondary-items">
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i> Total Clients: <span id="sc-total">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#2196f3;font-size:8px"></i> PETC Centers: <span id="sc-petc">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#9c27b0;font-size:8px"></i> PMVIC Centers: <span id="sc-pmvic">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i> Active PETC: <span id="sc-petc-active">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#ff9800;font-size:8px"></i> Suspended/No-Op: <span id="sc-susp">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#ffc107;font-size:8px"></i> Open Tickets: <span id="sc-open-tickets">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#f44336;font-size:8px"></i> Critical Issues: <span id="sc-critical">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#00bcd4;font-size:8px"></i> PMVIC Phase 1: <span id="sc-p1">—</span></span>
-        <span class="stat-chip"><i class="fas fa-circle" style="color:#26c6da;font-size:8px"></i> PMVIC Phase 2: <span id="sc-p2">—</span></span>
+      <div class="secondary-track">
+        <div class="secondary-belt">
+          <!-- Set A -->
+          <div class="secondary-items">
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i>&nbsp;Total Clients: <span id="sc-total">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#2196f3;font-size:8px"></i>&nbsp;PETC Centers: <span id="sc-petc">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#9c27b0;font-size:8px"></i>&nbsp;PMVIC Centers: <span id="sc-pmvic">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i>&nbsp;Active PETC: <span id="sc-petc-active">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#ff9800;font-size:8px"></i>&nbsp;Suspended/No-Op: <span id="sc-susp">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#ffc107;font-size:8px"></i>&nbsp;Open Tickets: <span id="sc-open-tickets">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#f44336;font-size:8px"></i>&nbsp;Critical Issues: <span id="sc-critical">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00bcd4;font-size:8px"></i>&nbsp;PMVIC Phase 1: <span id="sc-p1">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#26c6da;font-size:8px"></i>&nbsp;PMVIC Phase 2: <span id="sc-p2">—</span></span>
+          </div>
+          <!-- Set B (duplicate for seamless loop) -->
+          <div class="secondary-items">
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i>&nbsp;Total Clients: <span id="sc-total-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#2196f3;font-size:8px"></i>&nbsp;PETC Centers: <span id="sc-petc-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#9c27b0;font-size:8px"></i>&nbsp;PMVIC Centers: <span id="sc-pmvic-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00e676;font-size:8px"></i>&nbsp;Active PETC: <span id="sc-petc-active-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#ff9800;font-size:8px"></i>&nbsp;Suspended/No-Op: <span id="sc-susp-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#ffc107;font-size:8px"></i>&nbsp;Open Tickets: <span id="sc-open-tickets-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#f44336;font-size:8px"></i>&nbsp;Critical Issues: <span id="sc-critical-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#00bcd4;font-size:8px"></i>&nbsp;PMVIC Phase 1: <span id="sc-p1-2">—</span></span>
+            <span class="stat-chip"><i class="fas fa-circle" style="color:#26c6da;font-size:8px"></i>&nbsp;PMVIC Phase 2: <span id="sc-p2-2">—</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -281,6 +330,7 @@ async function renderOverview() {
 }
 
 function updateTickerStats(s) {
+  // Set A
   setText('tk-petc-active', s.petc.active);
   setText('tk-resolved', s.tickets.resolved);
   setText('tk-petc-total', s.petc.total);
@@ -294,6 +344,20 @@ function updateTickerStats(s) {
   setText('sc-critical', s.tickets.critical);
   setText('sc-p1', s.pmvic.phase1);
   setText('sc-p2', s.pmvic.phase2);
+  // Set B (duplicated belt for seamless loop)
+  setText('tk-petc-active-2', s.petc.active);
+  setText('tk-resolved-2', s.tickets.resolved);
+  setText('tk-petc-total-2', s.petc.total);
+  setText('tk-pmvic-total-2', s.pmvic.total);
+  setText('sc-total-2', s.combined_total);
+  setText('sc-petc-2', s.petc.total);
+  setText('sc-pmvic-2', s.pmvic.total);
+  setText('sc-petc-active-2', s.petc.active);
+  setText('sc-susp-2', s.petc.suspended + s.petc.no_operation);
+  setText('sc-open-tickets-2', s.tickets.open);
+  setText('sc-critical-2', s.tickets.critical);
+  setText('sc-p1-2', s.pmvic.phase1);
+  setText('sc-p2-2', s.pmvic.phase2);
 }
 
 function setText(id, val) {

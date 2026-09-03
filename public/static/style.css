@@ -130,22 +130,81 @@ body {
 }
 
 /* ── Live Ticker ── */
+/* ── Live Ticker (scrolling marquee) ── */
 .live-ticker {
   background: #091222;
   border-bottom: 1px solid var(--border);
-  padding: 6px 20px;
+  padding: 0;
   overflow: hidden;
-}
-
-.ticker-row {
   display: flex;
   align-items: center;
-  gap: 24px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  height: 30px;
 }
 
-.ticker-row::-webkit-scrollbar { display: none; }
+/* Fixed left section: LIVE badge + clock */
+.ticker-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px 0 16px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  height: 100%;
+  background: #091222;
+  z-index: 2;
+}
+
+/* Fade edges for smooth entry/exit */
+.ticker-left::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, #091222 60%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scrolling track */
+.ticker-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* The moving belt – duplicated for seamless loop */
+.ticker-belt {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  will-change: transform;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.ticker-belt:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-sep {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  color: var(--border-light);
+  font-size: 14px;
+  flex-shrink: 0;
+  user-select: none;
+}
 
 .live-badge {
   background: var(--accent-green);
@@ -161,17 +220,18 @@ body {
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  50% { opacity: 0.6; }
 }
 
 .ticker-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 11.5px;
   color: var(--text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
+  padding: 0 4px;
 }
 
 .ticker-item .dot {
@@ -179,44 +239,83 @@ body {
   height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
+  display: inline-block;
 }
 
 .ticker-item strong { color: var(--text-primary); }
 
+/* Fixed right clock */
+.ticker-right {
+  display: flex;
+  align-items: center;
+  padding: 0 14px 0 10px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  height: 100%;
+  background: #091222;
+  z-index: 2;
+}
+
 .ticker-time {
-  margin-left: auto;
   font-size: 11px;
   color: var(--text-muted);
   white-space: nowrap;
-  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.3px;
 }
 
-/* ── Secondary Ticker ── */
+/* ── Secondary Ticker (scrolling) ── */
 .secondary-ticker {
   background: #0a1525;
   border-bottom: 1px solid var(--border);
-  padding: 5px 20px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 26px;
+}
+
+.secondary-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.secondary-belt {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  will-change: transform;
+  animation: ticker-scroll 30s linear infinite;
+}
+
+.secondary-belt:hover {
+  animation-play-state: paused;
 }
 
 .secondary-items {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  gap: 0;
 }
 
-.secondary-items::-webkit-scrollbar { display: none; }
-
 .stat-chip {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 5px;
   font-size: 11px;
   color: var(--text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
+  padding: 0 14px;
+  border-right: 1px solid var(--border);
 }
+
+.stat-chip:last-child { border-right: none; }
 
 .stat-chip span { color: var(--text-primary); font-weight: 600; }
 
