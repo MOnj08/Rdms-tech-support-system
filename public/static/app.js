@@ -1070,7 +1070,7 @@ window.openTicketModal = function(data = null) {
         <div class="form-group">
           <label class="form-label">Priority</label>
           <select class="form-control" name="priority">
-            ${['Low','Medium','High','Critical'].map(p => `<option value="${p}" ${data?.priority===p?'selected':''${!data&&p==='Medium'?' selected':''}}>${p}</option>`).join('')}
+            ${['Low','Medium','High','Critical'].map(p => `<option value="${p}" ${(data?.priority===p || (!data && p==='Medium'))?'selected':''}>${p}</option>`).join('')}
           </select>
         </div>
         ${isEdit ? `
