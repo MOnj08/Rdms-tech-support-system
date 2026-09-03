@@ -6,6 +6,10 @@
     "build": "vite build",
     "preview": "wrangler pages dev",
     "deploy": "npm run build && wrangler pages deploy",
+    "dev:sandbox": "wrangler pages dev dist --d1=rdms-production --local --ip 0.0.0.0 --port 3000",
+    "db:migrate:local": "wrangler d1 migrations apply rdms-production --local",
+    "db:seed": "wrangler d1 execute rdms-production --local --file=./seed.sql",
+    "db:reset": "rm -rf .wrangler/state/v3/d1 && npm run db:migrate:local && npm run db:seed",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
