@@ -341,11 +341,16 @@ app.get('*', (c) => {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RDMS – PETC & PMVIC Support Dashboard</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#020b18">
+<title>RDMS – PETC &amp; PMVIC Support Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="/static/style.css">
+<style>
+  /* Ensure font smoothing on all browsers */
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+</style>
 </head>
 <body>
 <div id="app"></div>
